@@ -4,6 +4,16 @@ const styles = (theme) => ({
   animalImage: {
     width: 200,
     height: 200,
+    borderRadius: '50px',
+  },
+  mainDiv: {
+    display: 'flex',
+    placeContent: 'center',
+    placeItems: 'center',
+    flexDirection: 'column',
+    background: `transparent url(natureBackground.png) no-repeat center 0`,
+    width: '100wh',
+    height: '100vh',
   },
 });
 class ChidiyaUdd extends Component {
@@ -39,32 +49,36 @@ class ChidiyaUdd extends Component {
   };
   render() {
     const { classes } = this.props;
-    return this.state.isPlaying ? (
-      <>
-        <img
-          id="randomImage"
-          className={classes.animalImage}
-          src=""
-          alt="temp"
-        />
-        <Typography
-          onClick={(evt) => {
-            evt.preventDefault();
-            this.setPlayingStatus(false);
-          }}
-        >
-          Quit
-        </Typography>
-      </>
-    ) : (
-      <Typography
-        onClick={(evt) => {
-          evt.preventDefault();
-          this.setPlayingStatus(true);
-        }}
-      >
-        Start
-      </Typography>
+    return (
+      <div className={classes.mainDiv}>
+        {this.state.isPlaying ? (
+          <>
+            <img
+              id="randomImage"
+              className={classes.animalImage}
+              src=""
+              alt="temp"
+            />
+            <Typography
+              onClick={(evt) => {
+                evt.preventDefault();
+                this.setPlayingStatus(false);
+              }}
+            >
+              Quit
+            </Typography>
+          </>
+        ) : (
+          <Typography
+            onClick={(evt) => {
+              evt.preventDefault();
+              this.setPlayingStatus(true);
+            }}
+          >
+            Start
+          </Typography>
+        )}
+      </div>
     );
   }
 }
